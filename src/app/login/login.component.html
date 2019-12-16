@@ -1,4 +1,21 @@
-<form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+  <div id="loginContainer" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex="0 1 500px">
+      <mat-card-title>
+        Logga in
+      </mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+          <input type="text" name="username" matInput placeholder="Användarnamn">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" name="password" matInput placeholder="Lösenord">
+        </mat-form-field>
+        <div>
+          <span fxFlex></span>
+          <button mat-button type="submit">Bekräfta</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </form>
-<app-error-modal [modalHeaderText]="'Ett fel uppstod'" [modalBodyText]="errorMessage" [okButtonText]="'OK'">
-</app-error-modal>

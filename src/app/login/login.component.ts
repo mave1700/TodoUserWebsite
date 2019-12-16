@@ -10,7 +10,7 @@ import { ErrorHandlerService } from '../shared/services/error-handler.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private userAuthorized = false;
+  private userAuthenticated = false;
   public errorMessage = '';
   constructor(
     private router: Router,
@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
     .subscribe(response => {
       const token = (response as any).token;
       localStorage.setItem('jwt', token);
-      this.userAuthorized = true;
+      this.userAuthenticated = true;
       this.router.navigate(['/dashboard']);
     }, error => {
-      this.userAuthorized = false;
+      this.userAuthenticated = false;
       this.errorHandler.handleError(error);
       this.errorMessage = this.errorHandler.errorMessage;
     });
