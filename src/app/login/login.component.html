@@ -1,1 +1,4 @@
-<p>login works!</p>
+<form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+</form>
+<app-error-modal [modalHeaderText]="'Ett fel uppstod'" [modalBodyText]="errorMessage" [okButtonText]="'OK'">
+</app-error-modal>
