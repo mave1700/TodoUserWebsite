@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(form: NgForm) {
+  public login(form: NgForm) {
     const apiUrl = 'api/auth';
     const credentialsInput = JSON.stringify(form.value);
     this.repository.post(credentialsInput, apiUrl)
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       const token = (response as any).token;
       localStorage.setItem('jwt', token);
       this.userAuthorized = true;
-      this.router.navigate(['/dashboard'])
+      this.router.navigate(['/dashboard']);
     }, error => {
       this.userAuthorized = false;
       this.errorHandler.handleError(error);
