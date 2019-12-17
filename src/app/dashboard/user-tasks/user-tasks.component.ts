@@ -7,8 +7,8 @@ import { Task } from 'src/app/_interfaces/task.model';
   styleUrls: ['./user-tasks.component.css']
 })
 export class UserTasksComponent implements OnInit {
-
   @Input() public tasks: Task[] = [];
+  public displayedColumns: string[] = ['name', 'isCompleted', 'dueDate', 'creationDate'];
   constructor() { }
 
   ngOnInit() {
