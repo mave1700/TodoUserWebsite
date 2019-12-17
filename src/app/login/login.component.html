@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
   <div id="loginContainer" fxLayout fxLayoutAlign="center">
     <mat-card fxFlex="0 1 500px">
       <mat-card-title>
@@ -6,10 +6,16 @@
       </mat-card-title>
       <mat-card-content>
         <mat-form-field>
-          <input type="text" name="username" matInput placeholder="Användarnamn">
+          <input type="text" formControlName="username" matInput placeholder="Användarnamn">
+          <mat-error *ngIf="validateControl('username') && hasError('username', 'required')">Ange ett giltigt användarnamn</mat-error>
+          <mat-error *ngIf="validateControl('username') && hasError('username', 'maxlength')">Ange max 30 tecken</mat-error>
+          <mat-error *ngIf="validateControl('username') && hasError('username', 'minlength')">Ange minst 3 tecken</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input type="password" name="password" matInput placeholder="Lösenord">
+          <input type="password" formControlName="password" matInput placeholder="Lösenord">
+          <mat-error *ngIf="validateControl('password') && hasError('password', 'required')">Ange ett giltigt lösenord</mat-error>
+          <mat-error *ngIf="validateControl('password') && hasError('password', 'maxlength')">Ange max 30 tecken</mat-error>
+          <mat-error *ngIf="validateControl('password') && hasError('password', 'minlength')">Ange minst 3 tecken</mat-error>
         </mat-form-field>
         <div>
           <span fxFlex></span>

@@ -23,5 +23,6 @@ export class AppComponent {
 
   public logOut = () => {
     localStorage.removeItem('jwt');
+    this.router.navigate(['login']);
   }
 }

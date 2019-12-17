@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ErrorModalComponent } from './modals/error-modal/error-modal.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { ErrorDialogComponent } from './dialogs/error-dialog/error-dialog.component';
+import { MaterialModule } from '../material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
-  declarations: [ErrorModalComponent],
+  declarations: [ErrorDialogComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   exports: [
-    ErrorModalComponent
+    ErrorDialogComponent
   ]
 })
 export class SharedModule { }

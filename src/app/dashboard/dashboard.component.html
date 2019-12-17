@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<h2>Mina sidor</h2>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex="100%">
+    <mat-card>
+      <mat-card-title>
+        Uppgifter
+      </mat-card-title>
+      <mat-card-content>
+        <p>Användarnamn: {{user?.username}}</p>
+        <p>Förnamn: {{user?.firstname}}</p>
+        <p>Efternamn: {{user?.lastname}}</p>
+        <p>Födelsedatum: {{getDateOfBirth()}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="100%">
+    <app-user-tasks [tasks]="user?.tasks"></app-user-tasks>
+  </div>
+
+</div>

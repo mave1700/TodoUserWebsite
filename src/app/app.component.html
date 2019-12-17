@@ -5,8 +5,8 @@
   <h1>TodoSite</h1>
   <span fxFlex></span>
   <div fxShow="true" fxHide.lt-md="true">
-    <a *ngIf="isUserAuthenticated()" routerLink="#" mat-button>Mina sidor</a>
-    <a *ngIf="isUserAuthenticated()" routerLink="#" mat-button>Logga ut</a>
+    <a *ngIf="isUserAuthenticated()" routerLink="dashboard" mat-button>Mina sidor</a>
+    <a *ngIf="isUserAuthenticated()" (click)="logOut()" mat-button>Logga ut</a>
     <a *ngIf="!isUserAuthenticated()" routerLink="login" mat-button>Logga in</a>
   </div>
 </mat-toolbar>
@@ -17,8 +17,8 @@
       <button mat-icon-button fxFlexAlign="end">
         <mat-icon >arrow_back</mat-icon>
       </button>
-      <a *ngIf="isUserAuthenticated()" routerLink="#" mat-button>Mina sidor</a>
-      <a *ngIf="isUserAuthenticated()" routerLink="#" mat-button>Logga ut</a>
+      <a *ngIf="isUserAuthenticated()" routerLink="dashboard" mat-button>Mina sidor</a>
+      <a *ngIf="isUserAuthenticated()" (click)="logOut()" mat-button>Logga ut</a>
       <a *ngIf="!isUserAuthenticated()" routerLink="login" mat-button>Logga in</a>
     </div>
   </mat-sidenav>
