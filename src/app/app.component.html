@@ -2,7 +2,7 @@
   <button fxShow="true" fxHide.gt-sm="true" mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>TodoSite</h1>
+  <a routerLink="home"><h1>TodoSite</h1></a>
   <span fxFlex></span>
   <div fxShow="true" fxHide.lt-md="true">
     <a *ngIf="isUserAuthenticated()" routerLink="dashboard" mat-button>Mina sidor</a>
