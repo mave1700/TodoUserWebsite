@@ -4,7 +4,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { RepositoryService } from '../shared/services/repository.service';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { Login } from '../_interfaces/login.model';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../shared/dialogs/error-dialog/error-dialog.component';
 import { HttpErrorResponse } from '@angular/common/http';
 

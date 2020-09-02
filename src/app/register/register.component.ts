@@ -5,7 +5,7 @@ import { RepositoryService } from '../shared/services/repository.service';
 import { ErrorHandlerService } from '../shared/services/error-handler.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserForCreation } from '../_interfaces/user-for-creation.model';
-import { MatDialogConfig, MatDialog } from '@angular/material';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { SuccessDialogComponent } from '../shared/dialogs/success-dialog/success-dialog.component';
 
 @Component({
