@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDate = new Date().getDate();
-    console.log(currentDate);
     this.minDate = new Date(currentYear - 120, 0, 1);
     this.maxDate = new Date(currentYear - 2, currentMonth, currentDate);
   }
