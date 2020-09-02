@@ -8,6 +8,7 @@
     <a *ngIf="isUserAuthenticated()" routerLink="dashboard" mat-button>Mina sidor</a>
     <a *ngIf="isUserAuthenticated()" (click)="logOut()" mat-button>Logga ut</a>
     <a *ngIf="!isUserAuthenticated()" routerLink="login" mat-button>Logga in</a>
+    <a *ngIf="!isUserAuthenticated()" routerLink="register" mat-button>Registrera dig</a>
   </div>
 </mat-toolbar>
 <mat-sidenav-container fxFlexFill>
@@ -20,6 +21,7 @@
       <a *ngIf="isUserAuthenticated()" routerLink="dashboard" mat-button>Mina sidor</a>
       <a *ngIf="isUserAuthenticated()" (click)="logOut()" mat-button>Logga ut</a>
       <a *ngIf="!isUserAuthenticated()" routerLink="login" mat-button>Logga in</a>
+      <a *ngIf="!isUserAuthenticated()" routerLink="register" mat-button>Registrera dig</a>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>

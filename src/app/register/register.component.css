@@ -1,0 +1,8 @@
+#registerContainer{
+  height: 400px;
+  min-width:200px;
+}
+
+mat-form-field{
+  width:100%;
+}

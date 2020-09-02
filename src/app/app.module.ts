@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,9 +20,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalErrorComponent } from './error-pages/internal-error/internal-error.component';
-import { AuthGuardService } from './shared/services/auth-guard.service';
 import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
 import { UserTasksComponent } from './dashboard/user-tasks/user-tasks.component';
+import { SuccessDialogComponent } from './shared/dialogs/success-dialog/success-dialog.component';
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
@@ -50,14 +49,9 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] }
-    ]),
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         whitelistedDomains: ['localhost:44341'],
         blacklistedRoutes: []
       }
@@ -65,6 +59,6 @@ export function tokenGetter() {
   ],
   providers: [{provide: LOCALE_ID, useValue: 'sv'}],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorDialogComponent]
+  entryComponents: [ErrorDialogComponent, SuccessDialogComponent]
 })
 export class AppModule { }

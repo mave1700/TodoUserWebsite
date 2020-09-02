@@ -14,7 +14,6 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private userAuthenticated = false;
   public loginForm: FormGroup;
 
   constructor(
@@ -50,26 +49,27 @@ export class LoginComponent implements OnInit {
     let errorText: string;
     if (error.status === 401) {
       errorText = 'Fel användarnamn och/eller lösnord. Vänligen pröva igen.';
+      const config = new MatDialogConfig();
+      config.hasBackdrop = true;
+      config.data = {
+        headerText: 'Inloggningen misslyckades',
+        bodyText: errorText
+      };
+      this.dialog.open(ErrorDialogComponent, config);
     } else {
-      errorText = 'Oväntat fel. Försök igen senare.';
+      this.errorHandler.handleError(error);
     }
 
-    const config = new MatDialogConfig();
-    config.hasBackdrop = true;
-    config.data = {
-      headerText: 'Inloggningen misslyckades',
-      bodyText: errorText
-    };
-    this.dialog.open(ErrorDialogComponent, config);
+
   }
 
   public login(formValue: any) {
     if (this.loginForm.valid) {
-      this.executeLogin(formValue);
+      this.sendLoginForm(formValue);
     }
   }
 
-  public executeLogin(formValue: any) {
+  public sendLoginForm(formValue: any) {
     const credentialsInput: Login = {
       username: formValue.username,
       password: formValue.password
@@ -80,10 +80,8 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         const token = (response as any).token;
         localStorage.setItem('jwt', token);
-        this.userAuthenticated = true;
         this.router.navigate(['/dashboard']);
       }, error => {
-        this.userAuthenticated = false;
         this.handleFailedLogin(error);
       });
   }

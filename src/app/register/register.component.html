@@ -1,1 +1,59 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+  <div id="registerContainer" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex="0 1 500px">
+      <mat-card-title>
+        Registrera dig
+      </mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+          <input type="text" formControlName="firstname" matInput placeholder="Förnamn">
+          <mat-error *ngIf="validateControl('firstname') && hasError('firstname', 'required')">Ange ett giltigt förnamn
+          </mat-error>
+          <mat-error *ngIf="validateControl('firstname') && hasError('firstname', 'maxlength')">Ange max 45 tecken
+          </mat-error>
+          <mat-error *ngIf="validateControl('firstname') && hasError('firstname', 'minlength')">Ange minst 3 tecken
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="lastname" matInput placeholder="Efternamn">
+          <mat-error *ngIf="validateControl('lastname') && hasError('lastname', 'required')">Ange ett giltigt efternamn
+          </mat-error>
+          <mat-error *ngIf="validateControl('lastname') && hasError('lastname', 'maxlength')">Ange max 45 tecken
+          </mat-error>
+          <mat-error *ngIf="validateControl('lastname') && hasError('lastname', 'minlength')">Ange minst 3 tecken
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Födelsedatum</mat-label>
+          <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" [min]="minDate" [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="validateControl('dateOfBirth') && hasError('dateOfBirth', 'required')">Ange ett giltigt
+            födelsedatum</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" formControlName="username" matInput placeholder="Användarnamn">
+          <mat-error *ngIf="validateControl('username') && hasError('username', 'required')">Ange ett giltigt
+            användarnamn</mat-error>
+          <mat-error *ngIf="validateControl('username') && hasError('username', 'maxlength')">Ange max 30 tecken
+          </mat-error>
+          <mat-error *ngIf="validateControl('username') && hasError('username', 'minlength')">Ange minst 3 tecken
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" formControlName="password" matInput placeholder="Lösenord">
+          <mat-error *ngIf="validateControl('password') && hasError('password', 'required')">Ange ett giltigt lösenord
+          </mat-error>
+          <mat-error *ngIf="validateControl('password') && hasError('password', 'maxlength')">Ange max 30 tecken
+          </mat-error>
+          <mat-error *ngIf="validateControl('password') && hasError('password', 'minlength')">Ange minst 3 tecken
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <span fxFlex></span>
+          <button mat-button type="submit">Bekräfta</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>
